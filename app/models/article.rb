@@ -1,3 +1,4 @@
 class Article < ApplicationRecord
-    # モデルの定義
-end
+    validates :title, presence: true
+    validates :content, presence: true
+  end

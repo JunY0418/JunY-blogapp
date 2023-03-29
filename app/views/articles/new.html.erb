@@ -1,4 +1,11 @@
 <div class="container">
+    <%# エラーメッセージを配列で全て取得する(.full_messages) %>
+    <ul>
+    <% @article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+    <% end %>
+    </ul>
+
     <%= form_with(model:@article, url:articles_path, method:'post', local:true ) do |f| %>
     <div>
         <%= f.label :title, 'タイトル' %>
@@ -6,7 +13,7 @@
     <div>
         <%= f.text_field :title, class:'text' %>
     </div>
-        <div>
+    <div>
         <%= f.label :content, '内容' %>
     </div>
     <div>
