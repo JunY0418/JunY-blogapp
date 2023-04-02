@@ -1,6 +1,9 @@
 class ArticlesController < ApplicationController
     # 自動読み込みを有効にするための行
-    require_dependency 'article'
+    # require_dependency 'article'
+
+    # require 'article'
+    
     def index
       @articles = Article.all
     end
@@ -20,12 +23,25 @@ class ArticlesController < ApplicationController
         redirect_to article_path(@article), notice: '保存されています'
       else
         flash.now[:error] = '保存に失敗しました'
-        render :new
-
+        render :new, status: :unprocessable_entity
       end
     end
 
-    # フォームからの投稿データからタイトルと内容を抜き出す操作
+    def edit
+      @article = Article.find(params[:id])
+    end
+
+    def update
+      @article = Article.find(params[:id])
+      if @article.update(article_params)
+        redirect_to article_path(@article), notice: '更新できました'
+      else
+        flash.now[:error] = '更新できませんでした'
+        render :edit
+      end
+    end
+
+    # フォームからの投稿データからタイトルと内容を抜き出す
     private
     def article_params
       params.require(:article).permit(:title, :content)
