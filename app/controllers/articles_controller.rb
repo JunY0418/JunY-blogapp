@@ -1,6 +1,9 @@
 class ArticlesController < ApplicationController
     # 自動読み込みを有効にするための行
-    require_dependency 'article'
+    # require_dependency 'article'
+
+    # require 'article'
+    
     def index
       @articles = Article.all
     end
@@ -23,6 +26,10 @@ class ArticlesController < ApplicationController
         render :new, status: :unprocessable_entity
 
       end
+    end
+
+    def edit
+      @article = Article.find (params[:id])
     end
 
     # フォームからの投稿データからタイトルと内容を抜き出す操作
