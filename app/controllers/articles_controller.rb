@@ -1,21 +1,18 @@
 class ArticlesController < ApplicationController
-    # 自動読み込みを有効にするための行
-    # require_dependency 'article'
 
-    # require 'article'
-    
+    before_action :set_article, only: [:show, :edit, :update]
+
     def index
       @articles = Article.all
     end
 
     def show
-      @article = Article.find(params[:id])
     end
 
     def new
       @article = Article.new
     end
-    
+
     # データの枠を作り、もしデータを保存できたらそのページに飛ぶ、できなかったら
     def create
       @article = Article.new(article_params)
@@ -28,11 +25,9 @@ class ArticlesController < ApplicationController
     end
 
     def edit
-      @article = Article.find(params[:id])
     end
 
     def update
-      @article = Article.find(params[:id])
       if @article.update(article_params)
         redirect_to article_path(@article), notice: '更新できました'
       else
@@ -52,5 +47,9 @@ class ArticlesController < ApplicationController
     private
     def article_params
       params.require(:article).permit(:title, :content)
+    end
+
+    def set_article
+      @article = Article.find(params[:id])
     end
 end
