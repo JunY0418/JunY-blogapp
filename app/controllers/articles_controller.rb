@@ -32,6 +32,10 @@ class ArticlesController < ApplicationController
       @article = Article.find (params[:id])
     end
 
+    def update
+      
+    end
+
     # フォームからの投稿データからタイトルと内容を抜き出す操作
     private
     def article_params
