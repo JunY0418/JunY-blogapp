@@ -24,19 +24,24 @@ class ArticlesController < ApplicationController
       else
         flash.now[:error] = '保存に失敗しました'
         render :new, status: :unprocessable_entity
-
       end
     end
 
     def edit
-      @article = Article.find (params[:id])
+      @article = Article.find(params[:id])
     end
 
     def update
-      
+      @article = Article.find(params[:id])
+      if @article.update(article_params)
+        redirect_to article_path(@article), notice: '更新できました'
+      else
+        flash.now[:error] = '更新できませんでした'
+        render :edit
+      end
     end
 
-    # フォームからの投稿データからタイトルと内容を抜き出す操作
+    # フォームからの投稿データからタイトルと内容を抜き出す
     private
     def article_params
       params.require(:article).permit(:title, :content)
