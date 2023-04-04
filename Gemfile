@@ -37,9 +37,10 @@ gem 'jbuilder'
 gem 'faker'
 
 # Use Haml for template engine
-gem 'haml-rails'
-
 gem 'annotate'
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'haml-rails'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
