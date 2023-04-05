@@ -41,7 +41,6 @@ class ArticlesController < ApplicationController
 
   # フォームからの投稿データからタイトルと内容を抜き出す
   private
-
   def article_params
     params.require(:article).permit(:title, :content)
   end
