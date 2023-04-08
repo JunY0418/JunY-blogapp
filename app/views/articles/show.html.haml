@@ -6,7 +6,7 @@
     %div
       %p jun0418
       %p 2023/3/26
-    - if user_signed_in?
+    - if user_signed_in? && current_user.has_written?(@article)
       .article_detail_actions
         .dropdown
           = image_tag 'actions.svg', class: 'dropbtn'
