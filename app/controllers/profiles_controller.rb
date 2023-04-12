@@ -6,6 +6,7 @@ def show
 end
 
 def edit
+    @profile = current_user.build_profile
 end
 
 end
