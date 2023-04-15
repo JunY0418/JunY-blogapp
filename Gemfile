@@ -60,6 +60,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'pry-byebug'
   gem 'rubocop-rails', require: false
+  gem 'dotenv-rails'
 end
 
 group :development do
