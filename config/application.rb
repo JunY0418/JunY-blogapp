@@ -12,9 +12,10 @@ module BlodApp
     config.load_defaults 7.0
 
     # config/application.rb
-    Bundler.require(*Rails.groups)
-    # Load dotenv only in development or test environment
+    if Rails.env.development? || Rails.env.test?
+      Bundler.require(*Rails.groups)
       Dotenv::Railtie.load
+    end
 
     # Configuration for the application, engines, and railties goes here.
     #
