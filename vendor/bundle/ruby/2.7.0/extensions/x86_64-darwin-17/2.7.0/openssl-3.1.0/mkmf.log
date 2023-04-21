@@ -1,0 +1,2154 @@
+=== OpenSSL for Ruby configurator ===
+have_func: checking for rb_io_maybe_wait(0, Qnil, Qnil, Qnil) in ruby/io.h... -------------------- no
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib     -lruby.2.7   "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return !!argv[argc];
+6: }
+/* end */
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib     -lruby.2.7   "
+conftest.c:17:15: warning: implicit declaration of function 'rb_io_maybe_wait' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { rb_io_maybe_wait(0, Qnil, Qnil, Qnil); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_rb_io_maybe_wait", referenced from:
+      _t in conftest-b186e1.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <ruby/io.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { rb_io_maybe_wait(0, Qnil, Qnil, Qnil); return 0; }
+/* end */
+
+--------------------
+
+=== Checking for system dependent stuff... ===
+have_library: checking for t_open() in -lnsl... -------------------- no
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib     -lruby.2.7 -lnsl   "
+conftest.c:14:57: error: use of undeclared identifier 't_open'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))t_open; return !p; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     int (* volatile tp)(void)=(int (*)(void))&t;
+ 9:     printf("%d", (*tp)());
+10:   }
+11: 
+12:   return !!argv[argc];
+13: }
+14: int t(void) { void ((*volatile p)()); p = (void ((*)()))t_open; return !p; }
+/* end */
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib     -lruby.2.7 -lnsl   "
+ld: library not found for -lnsl
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     int (* volatile tp)(void)=(int (*)(void))&t;
+ 9:     printf("%d", (*tp)());
+10:   }
+11: 
+12:   return !!argv[argc];
+13: }
+14: extern void t_open();
+15: int t(void) { t_open(); return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for socket() in -lsocket... -------------------- no
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib     -lruby.2.7 -lsocket   "
+conftest.c:14:57: error: use of undeclared identifier 'socket'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))socket; return !p; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     int (* volatile tp)(void)=(int (*)(void))&t;
+ 9:     printf("%d", (*tp)());
+10:   }
+11: 
+12:   return !!argv[argc];
+13: }
+14: int t(void) { void ((*volatile p)()); p = (void ((*)()))socket; return !p; }
+/* end */
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib     -lruby.2.7 -lsocket   "
+ld: library not found for -lsocket
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     int (* volatile tp)(void)=(int (*)(void))&t;
+ 9:     printf("%d", (*tp)());
+10:   }
+11: 
+12:   return !!argv[argc];
+13: }
+14: extern void socket();
+15: int t(void) { socket(); return 0; }
+/* end */
+
+--------------------
+
+=== Checking for required stuff... ===
+have_header: checking for openssl/ssl.h... -------------------- yes
+
+" clang -E -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <openssl/ssl.h>
+/* end */
+
+--------------------
+
+have_library: checking for CRYPTO_malloc() in -lcrypto... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib     -lruby.2.7 -lcrypto   "
+conftest.c:14:57: error: use of undeclared identifier 'CRYPTO_malloc'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))CRYPTO_malloc; return !p; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     int (* volatile tp)(void)=(int (*)(void))&t;
+ 9:     printf("%d", (*tp)());
+10:   }
+11: 
+12:   return !!argv[argc];
+13: }
+14: int t(void) { void ((*volatile p)()); p = (void ((*)()))CRYPTO_malloc; return !p; }
+/* end */
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib     -lruby.2.7 -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     int (* volatile tp)(void)=(int (*)(void))&t;
+ 9:     printf("%d", (*tp)());
+10:   }
+11: 
+12:   return !!argv[argc];
+13: }
+14: extern void CRYPTO_malloc();
+15: int t(void) { CRYPTO_malloc(); return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for SSL_new() in -lssl... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+conftest.c:14:57: error: use of undeclared identifier 'SSL_new'
+int t(void) { void ((*volatile p)()); p = (void ((*)()))SSL_new; return !p; }
+                                                        ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     int (* volatile tp)(void)=(int (*)(void))&t;
+ 9:     printf("%d", (*tp)());
+10:   }
+11: 
+12:   return !!argv[argc];
+13: }
+14: int t(void) { void ((*volatile p)()); p = (void ((*)()))SSL_new; return !p; }
+/* end */
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     int (* volatile tp)(void)=(int (*)(void))&t;
+ 9:     printf("%d", (*tp)());
+10:   }
+11: 
+12:   return !!argv[argc];
+13: }
+14: extern void SSL_new();
+15: int t(void) { SSL_new(); return 0; }
+/* end */
+
+--------------------
+
+have_macro: checking for LIBRESSL_VERSION_NUMBER in openssl/opensslv.h... -------------------- no
+
+" clang -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe   -c conftest.c"
+conftest.c:6:3: error: 
+# error
+  ^
+conftest.c:7:1: error: expected identifier or '('
+|:/ === LIBRESSL_VERSION_NUMBER undefined === /:|
+^
+2 errors generated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <openssl/opensslv.h>
+4: /*top*/
+5: #ifndef LIBRESSL_VERSION_NUMBER
+6: # error
+7: |:/ === LIBRESSL_VERSION_NUMBER undefined === /:|
+8: #endif
+/* end */
+
+--------------------
+
+checking for OpenSSL version >= 1.0.2... -------------------- yes
+
+" clang -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe   -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <openssl/opensslv.h>
+4: 
+5: /*top*/
+6: int conftest_const[(OPENSSL_VERSION_NUMBER >= 0x10002000L) ? 1 : -1];
+/* end */
+
+--------------------
+
+=== Checking for OpenSSL features... ===
+have_func: checking for RAND_egd() in openssl/rand.h... -------------------- no
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+conftest.c:17:15: warning: implicit declaration of function 'RAND_egd' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { RAND_egd(); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_RAND_egd", referenced from:
+      _t in conftest-36a0ec.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/rand.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { RAND_egd(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_load_dynamic() in openssl/engine.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/engine.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { ENGINE_load_dynamic(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_load_4758cca() in openssl/engine.h... -------------------- no
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+conftest.c:17:15: warning: implicit declaration of function 'ENGINE_load_4758cca' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { ENGINE_load_4758cca(); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_ENGINE_load_4758cca", referenced from:
+      _t in conftest-98049d.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/engine.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { ENGINE_load_4758cca(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_load_aep() in openssl/engine.h... -------------------- no
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+conftest.c:17:15: warning: implicit declaration of function 'ENGINE_load_aep' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { ENGINE_load_aep(); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_ENGINE_load_aep", referenced from:
+      _t in conftest-a87d11.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/engine.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { ENGINE_load_aep(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_load_atalla() in openssl/engine.h... -------------------- no
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+conftest.c:17:15: warning: implicit declaration of function 'ENGINE_load_atalla' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { ENGINE_load_atalla(); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_ENGINE_load_atalla", referenced from:
+      _t in conftest-5ef31b.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/engine.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { ENGINE_load_atalla(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_load_chil() in openssl/engine.h... -------------------- no
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+conftest.c:17:15: warning: implicit declaration of function 'ENGINE_load_chil' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { ENGINE_load_chil(); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_ENGINE_load_chil", referenced from:
+      _t in conftest-ec6743.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/engine.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { ENGINE_load_chil(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_load_cswift() in openssl/engine.h... -------------------- no
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+conftest.c:17:15: warning: implicit declaration of function 'ENGINE_load_cswift' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { ENGINE_load_cswift(); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_ENGINE_load_cswift", referenced from:
+      _t in conftest-ad1143.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/engine.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { ENGINE_load_cswift(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_load_nuron() in openssl/engine.h... -------------------- no
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+conftest.c:17:15: warning: implicit declaration of function 'ENGINE_load_nuron' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { ENGINE_load_nuron(); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_ENGINE_load_nuron", referenced from:
+      _t in conftest-871d9f.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/engine.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { ENGINE_load_nuron(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_load_sureware() in openssl/engine.h... -------------------- no
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+conftest.c:17:15: warning: implicit declaration of function 'ENGINE_load_sureware' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { ENGINE_load_sureware(); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_ENGINE_load_sureware", referenced from:
+      _t in conftest-25785b.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/engine.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { ENGINE_load_sureware(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_load_ubsec() in openssl/engine.h... -------------------- no
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+conftest.c:17:15: warning: implicit declaration of function 'ENGINE_load_ubsec' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { ENGINE_load_ubsec(); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_ENGINE_load_ubsec", referenced from:
+      _t in conftest-906103.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/engine.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { ENGINE_load_ubsec(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_load_padlock() in openssl/engine.h... -------------------- no
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+conftest.c:17:15: warning: implicit declaration of function 'ENGINE_load_padlock' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { ENGINE_load_padlock(); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_ENGINE_load_padlock", referenced from:
+      _t in conftest-13faf0.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/engine.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { ENGINE_load_padlock(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_load_capi() in openssl/engine.h... -------------------- no
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+conftest.c:17:15: warning: implicit declaration of function 'ENGINE_load_capi' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { ENGINE_load_capi(); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_ENGINE_load_capi", referenced from:
+      _t in conftest-4c3e95.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/engine.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { ENGINE_load_capi(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_load_gmp() in openssl/engine.h... -------------------- no
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+conftest.c:17:15: warning: implicit declaration of function 'ENGINE_load_gmp' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { ENGINE_load_gmp(); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_ENGINE_load_gmp", referenced from:
+      _t in conftest-f8b8f6.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/engine.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { ENGINE_load_gmp(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_load_gost() in openssl/engine.h... -------------------- no
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+conftest.c:17:15: warning: implicit declaration of function 'ENGINE_load_gost' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { ENGINE_load_gost(); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_ENGINE_load_gost", referenced from:
+      _t in conftest-677ef9.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/engine.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { ENGINE_load_gost(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ENGINE_load_cryptodev() in openssl/engine.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/engine.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { ENGINE_load_cryptodev(); return 0; }
+/* end */
+
+--------------------
+
+have_struct_member: checking for SSL.ctx in openssl/ssl.h... -------------------- no
+
+" clang -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe   -c conftest.c"
+conftest.c:6:27: error: incomplete definition of type 'struct ssl_st'
+int s = (char *)&((SSL*)0)->ctx - (char *)0;
+                 ~~~~~~~~~^
+/Users/Jun/.rbenv/versions/2.7.8/openssl/include/openssl/ossl_typ.h:148:16: note: forward declaration of 'struct ssl_st'
+typedef struct ssl_st SSL;
+               ^
+1 error generated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/ssl.h>
+ 4: 
+ 5: /*top*/
+ 6: int s = (char *)&((SSL*)0)->ctx - (char *)0;
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   return !!argv[argc];
+10: }
+/* end */
+
+--------------------
+
+have_func: checking for EVP_MD_CTX_new() in openssl/evp.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/evp.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { EVP_MD_CTX_new(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for EVP_MD_CTX_free(NULL) in openssl/evp.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/evp.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { EVP_MD_CTX_free(NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for EVP_MD_CTX_pkey_ctx(NULL) in openssl/evp.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/evp.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { EVP_MD_CTX_pkey_ctx(NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for X509_STORE_get_ex_data(NULL, 0) in openssl/x509.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/x509.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { X509_STORE_get_ex_data(NULL, 0); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for X509_STORE_set_ex_data(NULL, 0, NULL) in openssl/x509.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/x509.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { X509_STORE_set_ex_data(NULL, 0, NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for X509_STORE_get_ex_new_index(0, NULL, NULL, NULL, NULL) in openssl/x509.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/x509.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { X509_STORE_get_ex_new_index(0, NULL, NULL, NULL, NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for X509_CRL_get0_signature(NULL, NULL, NULL) in openssl/x509.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/x509.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { X509_CRL_get0_signature(NULL, NULL, NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for X509_REQ_get0_signature(NULL, NULL, NULL) in openssl/x509.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/x509.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { X509_REQ_get0_signature(NULL, NULL, NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for X509_REVOKED_get0_serialNumber(NULL) in openssl/x509.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/x509.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { X509_REVOKED_get0_serialNumber(NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for X509_REVOKED_get0_revocationDate(NULL) in openssl/x509.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/x509.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { X509_REVOKED_get0_revocationDate(NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for X509_get0_tbs_sigalg(NULL) in openssl/x509.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/x509.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { X509_get0_tbs_sigalg(NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for X509_STORE_CTX_get0_untrusted(NULL) in openssl/x509.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/x509.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { X509_STORE_CTX_get0_untrusted(NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for X509_STORE_CTX_get0_cert(NULL) in openssl/x509.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/x509.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { X509_STORE_CTX_get0_cert(NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for X509_STORE_CTX_get0_chain(NULL) in openssl/x509.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/x509.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { X509_STORE_CTX_get0_chain(NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for OCSP_SINGLERESP_get0_id(NULL) in openssl/ocsp.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/ocsp.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { OCSP_SINGLERESP_get0_id(NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for SSL_CTX_get_ciphers(NULL) in openssl/ssl.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/ssl.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { SSL_CTX_get_ciphers(NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for X509_up_ref(NULL) in openssl/x509.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/x509.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { X509_up_ref(NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for X509_CRL_up_ref(NULL) in openssl/x509.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/x509.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { X509_CRL_up_ref(NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for X509_STORE_up_ref(NULL) in openssl/x509.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/x509.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { X509_STORE_up_ref(NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for SSL_SESSION_up_ref(NULL) in openssl/ssl.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/ssl.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { SSL_SESSION_up_ref(NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for EVP_PKEY_up_ref(NULL) in openssl/evp.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/evp.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { EVP_PKEY_up_ref(NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for SSL_CTX_set_min_proto_version(NULL, 0) in openssl/ssl.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/ssl.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { SSL_CTX_set_min_proto_version(NULL, 0); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for SSL_CTX_get_security_level(NULL) in openssl/ssl.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/ssl.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { SSL_CTX_get_security_level(NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for X509_get0_notBefore(NULL) in openssl/x509.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/x509.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { X509_get0_notBefore(NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for SSL_SESSION_get_protocol_version(NULL) in openssl/ssl.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/ssl.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { SSL_SESSION_get_protocol_version(NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for TS_STATUS_INFO_get0_status(NULL) in openssl/ts.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/ts.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { TS_STATUS_INFO_get0_status(NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for TS_STATUS_INFO_get0_text(NULL) in openssl/ts.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/ts.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { TS_STATUS_INFO_get0_text(NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for TS_STATUS_INFO_get0_failure_info(NULL) in openssl/ts.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/ts.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { TS_STATUS_INFO_get0_failure_info(NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for TS_VERIFY_CTS_set_certs(NULL, NULL) in openssl/ts.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/ts.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { TS_VERIFY_CTS_set_certs(NULL, NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for TS_VERIFY_CTX_set_store(NULL, NULL) in openssl/ts.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/ts.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { TS_VERIFY_CTX_set_store(NULL, NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for TS_VERIFY_CTX_add_flags(NULL, 0) in openssl/ts.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/ts.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { TS_VERIFY_CTX_add_flags(NULL, 0); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for TS_RESP_CTX_set_time_cb(NULL, NULL, NULL) in openssl/ts.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/ts.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { TS_RESP_CTX_set_time_cb(NULL, NULL, NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for EVP_PBE_scrypt("", 0, (unsigned char *)"", 0, 0, 0, 0, 0, NULL, 0) in openssl/evp.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/evp.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { EVP_PBE_scrypt("", 0, (unsigned char *)"", 0, 0, 0, 0, 0, NULL, 0); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for SSL_CTX_set_post_handshake_auth(NULL, 0) in openssl/ssl.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/ssl.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { SSL_CTX_set_post_handshake_auth(NULL, 0); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for EVP_PKEY_check(NULL) in openssl/evp.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/evp.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { EVP_PKEY_check(NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for EVP_PKEY_new_raw_private_key(0, NULL, (unsigned char *)"", 0) in openssl/evp.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/evp.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { EVP_PKEY_new_raw_private_key(0, NULL, (unsigned char *)"", 0); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for SSL_CTX_set_ciphersuites(NULL, "") in openssl/ssl.h... -------------------- yes
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/ssl.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { SSL_CTX_set_ciphersuites(NULL, ""); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for SSL_set0_tmp_dh_pkey(NULL, NULL) in openssl/ssl.h... -------------------- no
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+conftest.c:17:15: warning: implicit declaration of function 'SSL_set0_tmp_dh_pkey' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { SSL_set0_tmp_dh_pkey(NULL, NULL); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_SSL_set0_tmp_dh_pkey", referenced from:
+      _t in conftest-bde6c0.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/ssl.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { SSL_set0_tmp_dh_pkey(NULL, NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ERR_get_error_all(NULL, NULL, NULL, NULL, NULL) in openssl/err.h... -------------------- no
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+conftest.c:17:15: warning: implicit declaration of function 'ERR_get_error_all' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { ERR_get_error_all(NULL, NULL, NULL, NULL, NULL); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_ERR_get_error_all", referenced from:
+      _t in conftest-74204d.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/err.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { ERR_get_error_all(NULL, NULL, NULL, NULL, NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for TS_VERIFY_CTX_set_certs(NULL, NULL) in openssl/ts.h... -------------------- no
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+conftest.c:17:15: warning: implicit declaration of function 'TS_VERIFY_CTX_set_certs' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { TS_VERIFY_CTX_set_certs(NULL, NULL); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_TS_VERIFY_CTX_set_certs", referenced from:
+      _t in conftest-9269a0.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/ts.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { TS_VERIFY_CTX_set_certs(NULL, NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for SSL_CTX_load_verify_file(NULL, "") in openssl/ssl.h... -------------------- no
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+conftest.c:17:15: warning: implicit declaration of function 'SSL_CTX_load_verify_file' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { SSL_CTX_load_verify_file(NULL, ""); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_SSL_CTX_load_verify_file", referenced from:
+      _t in conftest-a1f5d9.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/ssl.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { SSL_CTX_load_verify_file(NULL, ""); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for BN_check_prime(NULL, NULL, NULL) in openssl/bn.h... -------------------- no
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+conftest.c:17:15: warning: implicit declaration of function 'BN_check_prime' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { BN_check_prime(NULL, NULL, NULL); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_BN_check_prime", referenced from:
+      _t in conftest-8bf516.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/bn.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { BN_check_prime(NULL, NULL, NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for EVP_MD_CTX_get0_md(NULL) in openssl/evp.h... -------------------- no
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+conftest.c:17:15: warning: implicit declaration of function 'EVP_MD_CTX_get0_md' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { EVP_MD_CTX_get0_md(NULL); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_EVP_MD_CTX_get0_md", referenced from:
+      _t in conftest-dfa3ec.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/evp.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { EVP_MD_CTX_get0_md(NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for EVP_MD_CTX_get_pkey_ctx(NULL) in openssl/evp.h... -------------------- no
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+conftest.c:17:15: warning: implicit declaration of function 'EVP_MD_CTX_get_pkey_ctx' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { EVP_MD_CTX_get_pkey_ctx(NULL); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_EVP_MD_CTX_get_pkey_ctx", referenced from:
+      _t in conftest-dfa858.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/evp.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { EVP_MD_CTX_get_pkey_ctx(NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for EVP_PKEY_eq(NULL, NULL) in openssl/evp.h... -------------------- no
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+conftest.c:17:15: warning: implicit declaration of function 'EVP_PKEY_eq' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { EVP_PKEY_eq(NULL, NULL); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_EVP_PKEY_eq", referenced from:
+      _t in conftest-4c067a.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/evp.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { EVP_PKEY_eq(NULL, NULL); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for EVP_PKEY_dup(NULL) in openssl/evp.h... -------------------- no
+
+" clang -o conftest -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/x86_64-darwin17 -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0/ruby/backward -I/Users/Jun/.rbenv/versions/2.7.8/include/ruby-2.7.0 -I. -I/Users/Jun/.rbenv/versions/2.7.8/openssl/include -I/Users/Jun/.rbenv/versions/2.7.8/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -fno-common -pipe conftest.c  -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib -L/Users/Jun/.rbenv/versions/2.7.8/openssl/lib -L. -L/Users/Jun/.rbenv/versions/2.7.8/lib  -fstack-protector-strong -L/usr/local/lib    -lssl -lcrypto  -lruby.2.7 -lssl -lcrypto   "
+conftest.c:17:15: warning: implicit declaration of function 'EVP_PKEY_dup' is invalid in C99 [-Wimplicit-function-declaration]
+int t(void) { EVP_PKEY_dup(NULL); return 0; }
+              ^
+1 warning generated.
+Undefined symbols for architecture x86_64:
+  "_EVP_PKEY_dup", referenced from:
+      _t in conftest-9409c1.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <openssl/evp.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: 
+17: int t(void) { EVP_PKEY_dup(NULL); return 0; }
+/* end */
+
+--------------------
+
+=== Checking done. ===
+extconf.h is:
+/* begin */
+ 1: #ifndef EXTCONF_H
+ 2: #define EXTCONF_H
+ 3: #define OPENSSL_SUPPRESS_DEPRECATED 1
+ 4: #define HAVE_OPENSSL_SSL_H 1
+ 5: #define HAVE_ENGINE_LOAD_DYNAMIC 1
+ 6: #define HAVE_ENGINE_LOAD_CRYPTODEV 1
+ 7: #define HAVE_OPAQUE_OPENSSL 1
+ 8: #define HAVE_EVP_MD_CTX_NEW 1
+ 9: #define HAVE_EVP_MD_CTX_FREE 1
+10: #define HAVE_EVP_MD_CTX_PKEY_CTX 1
+11: #define HAVE_X509_STORE_GET_EX_DATA 1
+12: #define HAVE_X509_STORE_SET_EX_DATA 1
+13: #define HAVE_X509_STORE_GET_EX_NEW_INDEX 1
+14: #define HAVE_X509_CRL_GET0_SIGNATURE 1
+15: #define HAVE_X509_REQ_GET0_SIGNATURE 1
+16: #define HAVE_X509_REVOKED_GET0_SERIALNUMBER 1
+17: #define HAVE_X509_REVOKED_GET0_REVOCATIONDATE 1
+18: #define HAVE_X509_GET0_TBS_SIGALG 1
+19: #define HAVE_X509_STORE_CTX_GET0_UNTRUSTED 1
+20: #define HAVE_X509_STORE_CTX_GET0_CERT 1
+21: #define HAVE_X509_STORE_CTX_GET0_CHAIN 1
+22: #define HAVE_OCSP_SINGLERESP_GET0_ID 1
+23: #define HAVE_SSL_CTX_GET_CIPHERS 1
+24: #define HAVE_X509_UP_REF 1
+25: #define HAVE_X509_CRL_UP_REF 1
+26: #define HAVE_X509_STORE_UP_REF 1
+27: #define HAVE_SSL_SESSION_UP_REF 1
+28: #define HAVE_EVP_PKEY_UP_REF 1
+29: #define HAVE_SSL_CTX_SET_MIN_PROTO_VERSION 1
+30: #define HAVE_SSL_CTX_GET_SECURITY_LEVEL 1
+31: #define HAVE_X509_GET0_NOTBEFORE 1
+32: #define HAVE_SSL_SESSION_GET_PROTOCOL_VERSION 1
+33: #define HAVE_TS_STATUS_INFO_GET0_STATUS 1
+34: #define HAVE_TS_STATUS_INFO_GET0_TEXT 1
+35: #define HAVE_TS_STATUS_INFO_GET0_FAILURE_INFO 1
+36: #define HAVE_TS_VERIFY_CTS_SET_CERTS 1
+37: #define HAVE_TS_VERIFY_CTX_SET_STORE 1
+38: #define HAVE_TS_VERIFY_CTX_ADD_FLAGS 1
+39: #define HAVE_TS_RESP_CTX_SET_TIME_CB 1
+40: #define HAVE_EVP_PBE_SCRYPT 1
+41: #define HAVE_SSL_CTX_SET_POST_HANDSHAKE_AUTH 1
+42: #define HAVE_EVP_PKEY_CHECK 1
+43: #define HAVE_EVP_PKEY_NEW_RAW_PRIVATE_KEY 1
+44: #define HAVE_SSL_CTX_SET_CIPHERSUITES 1
+45: #endif
+/* end */
+
+Done.
