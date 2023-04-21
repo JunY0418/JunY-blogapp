@@ -327,6 +327,7 @@ DEPENDENCIES
   binding_of_caller
   bootsnap
   capybara
+  date (~> 3.3, >= 3.3.3)
   debug
   devise
   dotenv-rails
@@ -344,6 +345,7 @@ DEPENDENCIES
   selenium-webdriver
   sprockets-rails
   stimulus-rails
+  timeout (~> 0.3.2)
   turbo-rails
   tzinfo-data
   web-console
