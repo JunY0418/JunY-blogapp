@@ -3,13 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.8'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.0.3'
+gem 'rails', '6.0.2.1'
+gem 'pg', '>= 0.18', '< 2.0'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
-
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
@@ -42,6 +40,7 @@ gem 'better_errors'
 gem 'binding_of_caller'
 gem 'haml-rails'
 gem 'devise'
+gem 'aws-sdk-s3', require: false
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
@@ -49,6 +48,8 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
+gem 'date', '~> 3.3', '>= 3.3.3'
+gem 'timeout', '~> 0.3.2'
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -60,6 +61,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'pry-byebug'
   gem 'rubocop-rails', require: false
+  gem 'dotenv-rails'
 end
 
 group :development do
