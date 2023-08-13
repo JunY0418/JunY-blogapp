@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2023_04_13_230240) do
-=======
 ActiveRecord::Schema.define(version: 2023_05_01_045010) do
->>>>>>> f00cf7655f3dc83b2e48fa8a2e2612b7f64b7660
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +30,7 @@ ActiveRecord::Schema.define(version: 2023_05_01_045010) do
     t.string "filename", null: false
     t.string "content_type"
     t.text "metadata"
+    t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum"
     t.datetime "created_at", precision: 6, null: false

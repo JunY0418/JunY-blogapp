@@ -147,14 +147,9 @@ GEM
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
     io-console (0.6.0)
-<<<<<<< HEAD
+    ipaddr (1.2.5)
     irb (1.7.4)
       reline (>= 0.3.6)
-=======
-    ipaddr (1.2.5)
-    irb (1.6.4)
-      reline (>= 0.3.0)
->>>>>>> f00cf7655f3dc83b2e48fa8a2e2612b7f64b7660
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
