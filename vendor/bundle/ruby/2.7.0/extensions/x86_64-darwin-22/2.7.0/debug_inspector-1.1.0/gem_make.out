@@ -1,0 +1,15 @@
+current directory: /Users/jun/Desktop/blog-app/vendor/bundle/ruby/2.7.0/gems/debug_inspector-1.1.0/ext/debug_inspector
+/Users/jun/.rbenv/versions/2.7.8/bin/ruby -I /Users/jun/.rbenv/versions/2.7.8/lib/ruby/2.7.0 -r ./siteconf20230808-11182-1se4605.rb extconf.rb
+creating Makefile
+
+current directory: /Users/jun/Desktop/blog-app/vendor/bundle/ruby/2.7.0/gems/debug_inspector-1.1.0/ext/debug_inspector
+make "DESTDIR=" clean
+
+current directory: /Users/jun/Desktop/blog-app/vendor/bundle/ruby/2.7.0/gems/debug_inspector-1.1.0/ext/debug_inspector
+make "DESTDIR="
+compiling debug_inspector.c
+linking shared-object debug_inspector.bundle
+
+current directory: /Users/jun/Desktop/blog-app/vendor/bundle/ruby/2.7.0/gems/debug_inspector-1.1.0/ext/debug_inspector
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 debug_inspector.bundle ./.gem.20230808-11182-1q89rkk

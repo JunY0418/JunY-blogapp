@@ -1,0 +1,16 @@
+current directory: /Users/jun/Desktop/blog-app1/vendor/bundle/ruby/2.7.0/gems/haml-6.1.2/ext/haml
+/Users/jun/.rbenv/versions/2.7.8/bin/ruby -I /Users/jun/.rbenv/versions/2.7.8/lib/ruby/2.7.0 -r ./siteconf20230813-73050-t6wfyd.rb extconf.rb
+creating Makefile
+
+current directory: /Users/jun/Desktop/blog-app1/vendor/bundle/ruby/2.7.0/gems/haml-6.1.2/ext/haml
+make "DESTDIR=" clean
+
+current directory: /Users/jun/Desktop/blog-app1/vendor/bundle/ruby/2.7.0/gems/haml-6.1.2/ext/haml
+make "DESTDIR="
+compiling haml.c
+compiling hescape.c
+linking shared-object haml/haml.bundle
+
+current directory: /Users/jun/Desktop/blog-app1/vendor/bundle/ruby/2.7.0/gems/haml-6.1.2/ext/haml
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 haml.bundle ./.gem.20230813-73050-l8whyb/haml

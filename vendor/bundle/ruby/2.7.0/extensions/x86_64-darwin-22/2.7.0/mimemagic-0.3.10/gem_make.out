@@ -1,0 +1,3 @@
+current directory: /Users/jun/Desktop/blog-app/vendor/bundle/ruby/2.7.0/gems/mimemagic-0.3.10/ext/mimemagic
+/Users/jun/.rbenv/versions/2.7.8/bin/ruby -I/Users/jun/.rbenv/versions/2.7.8/lib/ruby/2.7.0/rubygems -rrubygems /Users/jun/Desktop/blog-app/vendor/bundle/ruby/2.7.0/gems/rake-13.0.6/exe/rake RUBYARCHDIR\=/Users/jun/Desktop/blog-app/vendor/bundle/ruby/2.7.0/extensions/x86_64-darwin-22/2.7.0/mimemagic-0.3.10 RUBYLIBDIR\=/Users/jun/Desktop/blog-app/vendor/bundle/ruby/2.7.0/extensions/x86_64-darwin-22/2.7.0/mimemagic-0.3.10
+mkdir -p /Users/jun/Desktop/blog-app/vendor/bundle/ruby/2.7.0/extensions/x86_64-darwin-22/2.7.0/mimemagic-0.3.10/mimemagic
