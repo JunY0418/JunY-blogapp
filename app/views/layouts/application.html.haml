@@ -6,8 +6,8 @@
     %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag "application", media: 'all', "data-turbolinks-track": "reload"
+    = javascript_pack_tag "application", "data-turbolinks-track": "reload"
     -# = javascript_importmap_tags
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     %link{:href => "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", :rel => "stylesheet"}/
@@ -18,7 +18,7 @@
           = link_to :back do
             = image_tag 'back.svg', class: 'header_back'
         %p.header_pageTitle
-          = link_to 'Blogapp', root_path
+          = link_to 'BlogApp', root_path
       - if user_signed_in?
         .dropdown
           = image_tag current_user.avatar_image, class: 'header_avatar dropbtn'
