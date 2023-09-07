@@ -11,9 +11,9 @@ input, select {
     font-size: 12px;
   }
 
-  textarea trix-editor {
+  textarea, trix-editor {
     width: 100%;
-    margin: 8px 0px;
+    margin: 8px 5px;
     padding: 8px 8px;
     min-height: 440px;
     resize: vertical;
