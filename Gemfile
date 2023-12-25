@@ -36,6 +36,7 @@ gem 'faker'
 
 # Use Haml for template engine
 gem 'annotate'
+gem 'active_decorator'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'haml-rails'
