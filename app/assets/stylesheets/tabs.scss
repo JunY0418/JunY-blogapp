@@ -18,7 +18,10 @@
 
     &.active {
       background-color: $primary-color;
-      color: white;
+
+      a{
+        color: white;
+      }
     }
 
     &:hover {
