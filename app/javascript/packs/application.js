@@ -16,3 +16,11 @@ require("@rails/actiontext")
 
 import Rails from '@rails/ujs';
 Rails.start();
+
+import $ from 'jquery'
+
+document.addEventListener('DOMContentLoaded', () => {
+  $('.article_title').on('click', () => {
+    window.alert('CLICKED')
+  })
+})
