@@ -18,9 +18,14 @@ import Rails from '@rails/ujs';
 Rails.start();
 
 import $ from 'jquery'
+import axios from 'axios'
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbolinks:load', () => {
   $('.article_title').on('click', () => {
-    window.alert('CLICKED')
+    axios.get('/')
+    .then((response)=>{
+      console.log(response)
+    }
+    )
   })
 })
