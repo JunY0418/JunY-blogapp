@@ -22,15 +22,14 @@ const handleCommentForm = () => {
 
 const appendNewComment = (comment) => {
   $('.comments-container').append(
-    `<div class="article_comment"><p>${escape(comment.content)}</p></div>`
+    `<div class="article_comment"><p>${comment.content}</p></div>`
   )
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbolinks:load', () => {
   const dataset = $('#article-show').data()
   const articleId = dataset.articleId
-
-  axios.get(`/api/articles/${articleId}/comments`)
+  axios.get(`/articles/${articleId}/comments`)
     .then((response) => {
       const comments = response.data
       comments.forEach((comment) => {
@@ -48,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!content) {
       window.alert('コメントを入力してください')
     } else {
-      axios.post(`/api/articles/${articleId}/comments`, {
+      axios.post(`/articles/${articleId}/comments`, {
         comment: {content: content}
       })
         .then((res) => {
@@ -59,12 +58,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })
 
-  axios.get(`/api/articles/${articleId}/like`)
+  axios.get(`/articles/${articleId}/like`)
     .then((response) => {
       const hasLiked = response.data.hasLiked
       handleHeartDisplay(hasLiked)
     })
-
   listenInactiveHeartEvent(articleId)
   listenActiveHeartEvent(articleId)
 })
+// document.addEventListener('turbolinks:load', () => {
+//   const dataset = $('#article-show').data()
+//   const articleId = dataset.articleId
+//   axios.get(`/articles/${articleId}/like`)
+//     .then((response) => {
+//       const hasLiked = response.data.hasLiked
+//       if (hasLiked) {
+//         $('.active-heart').removeClass('hidden')
+//       } else {
+//         $('.inactive-heart').removeClass('hidden')
+//       }
+//     })
+// })
