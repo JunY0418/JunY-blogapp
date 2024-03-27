@@ -2,7 +2,6 @@ import $ from 'jquery'
 import axios from 'modules/axios'
 
 const listenInactiveHeartEvent = (articleId) => {
-
   $('.inactive-heart').on('click', () => {
     axios.post(`/articles/${articleId}/like`)
       .then((response) => {
@@ -20,7 +19,6 @@ const listenInactiveHeartEvent = (articleId) => {
 }
 
 const listenActiveHeartEvent = (articleId) => {
-
   $('.active-heart').on('click', () => {
     axios.delete(`/articles/${articleId}/like`)
       .then((response) => {
